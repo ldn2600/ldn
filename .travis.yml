@@ -5,6 +5,8 @@ before_script:
   - uptime
 install:
   - sudo apt-get install openssh-client sshpass rsync
+script:
+  - uptime
 after_script:
   - uptime
 after_success:
