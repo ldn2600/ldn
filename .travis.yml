@@ -11,7 +11,7 @@ after_script:
   - uptime
 after_success:
   - echo -e "Host *\n\tLogLevel ERROR\n\tstricthostkeychecking no" >> ~/.ssh/config
-  - sshpass -p "$DEPLOY_PASS" ssh "$DEPLOY_USER"@"$DEPLOY_HOST" "cd public_html/ && git reset --hard && git pull" 
+  - sshpass -p "$DEPLOY_PASS" ssh "$DEPLOY_USER"@"$DEPLOY_HOST" $DEPLOY_CODE   #"cd public_html/ && git reset --hard && git pull" 
 
 env:
   global:
