@@ -1,17 +1,17 @@
-sudo: false
 language: php
 php:
   - 5.5
 before_script:
   - uptime
-  - sshpass -p $DEPLOY_PASS ssh $DEPLOY_USER@$DEPLOY_HOST $DEPLOY_CODE
 install:
   - uptime
+  - sudo apt-get install openssh-client sshpass rsync
 script:
   - uptime
 after_script:
   - uptime
 after_success:
+  - echo -e "Host $DEPLOY_HOST\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - sshpass -p $DEPLOY_PASS ssh $DEPLOY_USER@$DEPLOY_HOST $DEPLOY_CODE
 
 env:
