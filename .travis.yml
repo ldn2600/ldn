@@ -12,7 +12,7 @@ after_script:
   - uptime
 after_success:
   - echo -e "Host $DEPLOY_HOST\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-  - sshpass -p $DEPLOY_PASS ssh $DEPLOY_USER@$DEPLOY_HOST $DEPLOY_CODE
+  - sshpass -p "$DEPLOY_PASS" ssh "$DEPLOY_USER"@"$DEPLOY_HOST" "cd public_html/ && git reset --hard && git pull" 
 
 env:
   global:
